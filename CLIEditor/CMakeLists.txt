@@ -1,5 +1,6 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.15)
 project(CLIEditor)
+set(CMAKE_CXX_STANDART 17)
 
 add_executable(CLIEditor
     src/main.cpp
