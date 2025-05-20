@@ -16,8 +16,8 @@ int main(int argc,char* argv[]){
 		cliedit::show_manual();
 		return 0;
 	}
-	if(args.size() == 4 && args[2] == "--help"){
-		cliedit::show_command_manual(args[3]);
+	if(args.size() == 3 && args[1] == "--help"){
+		cliedit::show_command_manual(args[2]);
 		return 0;
 	}
 	if(args.size() < 3){
