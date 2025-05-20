@@ -3,7 +3,7 @@
 #include <string>
 #include <fstream>
 using namespace std;
-int cliedit::write(fstream& file,string str){
+int cliedit::write(fstream& file,const string& str){
 	if(!file.is_open()){
 		cerr << "Файл не открыт\n";
 		return 1;
