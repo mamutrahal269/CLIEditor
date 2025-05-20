@@ -15,7 +15,7 @@ void cliedit::show_manual(){
 	"| Справка по команде: ./programm --help команда" << NL;
 	return;
 }
-void cliedit::show_command_manual(string command){
+void cliedit::show_command_manual(const string& command){
 	if(command == "rd"){
 		cout << "Использование команды rd: " << NL <<
 		"./programm file.name -rd" << NL <<
