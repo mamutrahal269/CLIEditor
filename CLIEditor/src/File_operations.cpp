@@ -20,7 +20,7 @@ int cliedit::read(fstream& file){
 	file.close();
 	return 0;
 }
-int cliedit::search(fstream& file,const string str){
+int cliedit::search(fstream& file,const string& str){
 	if(!file.is_open()){
 		cerr << "Файл не открыт\n";
 		return 1;
