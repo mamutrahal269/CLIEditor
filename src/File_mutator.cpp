@@ -39,9 +39,6 @@ void File_mutator::open_file(const std::string filename,std::ios::openmode mode)
 		throw std::runtime_error("не удалось открыть файл");
 	}
 }
-void File_mutator::write_file(const std::string str){
-	file<<str;
-}
 void File_mutator::erase_bytes(int start,int count){
 	std::string temp;
 	char ch;
@@ -68,4 +65,8 @@ void File_mutator::insert(int byte,const std::string str){
 	file.close();
 	file.open(file_name,std::ios::in | std::ios::out | std::ios::trunc);
 	file<<temp;
+}
+File_mutator& File_mutator::operator<<(const std::string str){
+	file<<str;
+	return *this;
 }
