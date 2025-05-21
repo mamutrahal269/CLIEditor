@@ -16,9 +16,9 @@ namespace editor{
 		File_mutator& operator=(const File_mutator&) =delete;
 		File_mutator() =delete;
 		
+		File_mutator& operator<<(const std::string str); 
 		void open_file(const std::string filename);
 		void open_file(const std::string filename,std::ios::openmode mode);
-		void write_file(const std::string str);
 		void erase_bytes(int start,int count);
 		void insert(int byte,const std::string str);
 	};
