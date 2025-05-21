@@ -40,9 +40,6 @@ void File_mutator::open_file(const std::string filename,std::ios::openmode mode)
 	}
 }
 void File_mutator::write_file(const std::string str){
-	if(!file.is_open()){
-		throw std::runtime_error("не удалось открыть файл");
-	}
 	file<<str;
 }
 void File_mutator::erase_bytes(int start,int count){
