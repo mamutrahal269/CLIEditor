@@ -50,7 +50,7 @@ int main(int argc,char* argv[]){
 		}
 		try{
 			File_mutator file_mutator(filename,ios::trunc);
-			file_mutator.write_file(args[3]);
+			file_mutator << args[3];
 		}catch(runtime_error& err){
 			cerr << "Ошибка: " << err.what() << '\n';
 			return ExitCode::Fail;
@@ -64,7 +64,7 @@ int main(int argc,char* argv[]){
 		}
 		try{
 			File_mutator file_mutator(filename,ios::app);
-			file_mutator.write_file(args[3]);
+			file_mutator << args[3];
 		}catch(runtime_error& err){
 			cerr << "Ошибка: " << err.what() << '\n';
 			return ExitCode::Fail;
