@@ -25,7 +25,7 @@ int main(int argc,char* argv[]){
 	}
 	if(args.size()<3){
 		user_help();
-		return ExitCode::Fail;
+		return ExitCode::Wrong_Arg;
 	}
 	string command = args[2];
 	string filename = args[1];
