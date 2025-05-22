@@ -8,7 +8,7 @@ File_mutator::File_mutator(const std::string filename) : file_name(filename){
 	if(filename == ""){
 		throw std::runtime_error("пустое имя файла");
 	}
-	file.open(filename,std::ios::in | std::ios::out);
+	file.open(filename,std::ios::in | std::ios::out | std::ios::binary);
 	if(!file.is_open()){
 		throw std::runtime_error("не удалось открыть файл");
 	}
@@ -17,7 +17,7 @@ File_mutator::File_mutator(const std::string filename,std::ios::openmode mode)  
 	if(filename == ""){
 		throw std::runtime_error("пустое имя файла");
 	}
-	file.open(filename,std::ios::in | std::ios::out | mode);
+	file.open(filename,std::ios::in | std::ios::out | std::ios::binary | mode);
 	if(!file.is_open()){
 		throw std::runtime_error("не удалось открыть файл");
 	}
@@ -27,14 +27,14 @@ File_mutator::~File_mutator() noexcept{
 }
 void File_mutator::open_file(const std::string filename){
 	file_name = filename;
-	file.open(filename,std::ios::in | std::ios::out);
+	file.open(filename,std::ios::in | std::ios::out | std::ios::binary);
 	if(!file.is_open()){
 		throw std::runtime_error("не удалось открыть файл");
 	}
 }
 void File_mutator::open_file(const std::string filename,std::ios::openmode mode){
 	file_name = filename;
-	file.open(filename,std::ios::in | std::ios::out | mode);
+	file.open(filename,std::ios::in | std::ios::out | std::ios::binary | mode);
 	if(!file.is_open()){
 		throw std::runtime_error("не удалось открыть файл");
 	}
