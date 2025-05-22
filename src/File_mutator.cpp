@@ -19,7 +19,7 @@ File_mutator::File_mutator(const std::string filename,std::ios::openmode mode)  
 	}
 	file.open(filename,std::ios::in | std::ios::out | mode);
 	if(!file.is_open()){
-		throw std::runtime_error("Не удалось открыть файл");
+		throw std::runtime_error("не удалось открыть файл");
 	}
 }
 File_mutator::~File_mutator() noexcept{
