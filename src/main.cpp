@@ -1,6 +1,7 @@
 #include "../include/File_readonly.hpp"
 #include "../include/File_mutator.hpp"
 #include "../include/User_help.hpp"
+#include "../include/Colors.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
@@ -38,7 +39,7 @@ int main(int argc,char* argv[]){
 			File_readonly file_readonly(filename);
 			file_readonly.readfile();
 		}catch(runtime_error& err){
-			cerr << "Ошибка: " << err.what() << '\n';
+			cerr << RED << "Ошибка: " << err.what() << RESET <<'\n';
 			return ExitCode::Fail;
 		}
 		return ExitCode::Success;
@@ -52,7 +53,7 @@ int main(int argc,char* argv[]){
 			File_mutator file_mutator(filename,ios::trunc);
 			file_mutator << args[3];
 		}catch(runtime_error& err){
-			cerr << "Ошибка: " << err.what() << '\n';
+			cerr << RED << "Ошибка: " << err.what() << RESET <<'\n';
 			return ExitCode::Fail;
 		}
 		return ExitCode::Success;
@@ -66,7 +67,7 @@ int main(int argc,char* argv[]){
 			File_mutator file_mutator(filename,ios::app);
 			file_mutator << args[3];
 		}catch(runtime_error& err){
-			cerr << "Ошибка: " << err.what() << '\n';
+			cerr << RED << "Ошибка: " << err.what() << RESET <<'\n';
 			return ExitCode::Fail;
 		}
 		return ExitCode::Success;
@@ -80,7 +81,7 @@ int main(int argc,char* argv[]){
 			File_readonly file_readonly(filename);
 			file_readonly.copyfile(args[3]);
 		}catch(runtime_error& err){
-			cerr << "Ошибка: " << err.what() << '\n';
+			cerr << RED << "Ошибка: " << err.what() << RESET <<'\n';
 			return ExitCode::Fail;
 		}
 		return ExitCode::Success;
@@ -94,17 +95,17 @@ int main(int argc,char* argv[]){
 		try{
 			byte = stoi(args[3]);
 		}catch (invalid_argument& err) {
-			cerr << "Ошибка: некорректный числовой аргумент\n";
+			cerr << YELLOW << "Ошибка: некорректный числовой аргумент" << RESET << "\n";
 			return ExitCode::Wrong_Arg;
 		} catch (out_of_range& err) {
-			cerr << "Ошибка: число вне диапазона\n";
+			cerr << YELLOW << "Ошибка: число вне диапазона" << RESET << "\n";
 			return ExitCode::Wrong_Arg;
 		}
 		try{
 			File_mutator file_mutator(filename);
 			file_mutator.insert(byte,args[4]);
 		}catch(runtime_error& err){
-			cerr << "Ошибка: " << err.what() << '\n';
+			cerr << RED << "Ошибка: " << err.what() << RESET <<'\n';
 			return ExitCode::Fail;
 		}
 		return ExitCode::Success;
@@ -119,17 +120,17 @@ int main(int argc,char* argv[]){
 			start = stoi(args[3]);
 			count = stoi(args[4]);
 		}catch (invalid_argument& err) {
-			cerr << "Ошибка: некорректный числовой аргумент\n";
+			cerr << YELLOW << "Ошибка: некорректный числовой аргумент" << RESET << "\n";
 			return ExitCode::Wrong_Arg;
 		} catch (out_of_range& err) {
-			cerr << "Ошибка: число вне диапазона\n";
+			cerr << YELLOW << "Ошибка: число вне диапазона" << RESET << "\n";
 			return ExitCode::Wrong_Arg;
 		}
 		try{
 			File_mutator file_mutator(filename);
 			file_mutator.erase_bytes(start,count);
 		}catch(runtime_error& err){
-			cerr << "Ошибка: " << err.what() << '\n';
+			cerr << RED << "Ошибка: " << err.what() << RESET <<'\n';
 			return ExitCode::Fail;
 		}
 		return ExitCode::Success;
@@ -143,7 +144,7 @@ int main(int argc,char* argv[]){
 			File_readonly file_readonly(filename);
 			file_readonly.search(args[3]);
 		}catch(runtime_error& err){
-			cerr << "Ошибка: " << err.what() << '\n';
+			cerr << RED << "Ошибка: " << err.what() << RESET <<'\n';
 			return ExitCode::Fail;
 		}
 		return ExitCode::Success;
