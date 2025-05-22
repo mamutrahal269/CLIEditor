@@ -8,7 +8,7 @@ File_readonly::File_readonly(const std::string filename){
 	if(filename == ""){
 		throw std::runtime_error("пустое имя файла");
 	}
-	file.open(filename);
+	file.open(filename,std::ios::binary);
 	if(!file.is_open()){
 		throw std::runtime_error("не удалось открыть файл ");
 	}
@@ -18,7 +18,7 @@ File_readonly::~File_readonly() noexcept{
 	if(helpfile.is_open()) helpfile.close();
 }
 void File_readonly::open_file(std::string filename){
-	file.open(filename);
+	file.open(filename,std::ios::binary);
 	if(!file.is_open()){
 		throw std::runtime_error("не удалось открыть файл");
 	}
