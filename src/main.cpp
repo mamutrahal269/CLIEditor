@@ -105,7 +105,7 @@ int main(int argc,char* argv[]){
 			byte = stoi(args[3]);
 		}catch (invalid_argument& err) {
 			error("неверный параметр");
-			help("можно указывать только числа");
+			help("сначала число потом строка");
 			return ExitCode::Wrong_Arg;
 		} catch (out_of_range& err) {
 			error("неверный параметр");
