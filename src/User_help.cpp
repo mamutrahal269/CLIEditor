@@ -1,5 +1,5 @@
 #include "../include/User_help.hpp"
-#include "../include/Colors.hpp"
+#include "../include/Color_output.hpp"
 #include <iostream>
 #include <string>
 const char NL = '\n';
@@ -69,7 +69,7 @@ void command_help(const std::string command){
 		return;
 	}
 	else{
-		std::cout << RED << "Команда не существует" << RESET << NL;
+		error("команда не существет");
 		return;
 	}
 }
