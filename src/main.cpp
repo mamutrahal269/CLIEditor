@@ -1,7 +1,7 @@
 #include "../include/File_readonly.hpp"
 #include "../include/File_mutator.hpp"
 #include "../include/User_help.hpp"
-#include "../include/Colors.hpp"
+#include "../include/Color_output.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
@@ -25,6 +25,7 @@ int main(int argc,char* argv[]){
 		return ExitCode::Success;
 	}
 	if(args.size()<3){
+		warning("неверное число параметров");
 		user_help();
 		return ExitCode::Wrong_Arg;
 	}
@@ -32,6 +33,7 @@ int main(int argc,char* argv[]){
 	string filename = args[1];
 	if(command == "-rd"){
 		if(args.size() != 3){
+			warning("неверное число параметров");
 			command_help("rd");
 			return ExitCode::Wrong_Arg;
 		}
@@ -39,13 +41,14 @@ int main(int argc,char* argv[]){
 			File_readonly file_readonly(filename);
 			file_readonly.readfile();
 		}catch(runtime_error& err){
-			cerr << RED << "Ошибка: " << err.what() << RESET <<'\n';
+			error(err.what());
 			return ExitCode::Fail;
 		}
 		return ExitCode::Success;
 	}
 	if(command == "-rw"){
 		if(args.size() != 4){
+			warning("неверное число параметров");
 			command_help("rw");
 			return ExitCode::Wrong_Arg;
 		}
@@ -53,13 +56,15 @@ int main(int argc,char* argv[]){
 			File_mutator file_mutator(filename,ios::trunc);
 			file_mutator << args[3];
 		}catch(runtime_error& err){
-			cerr << RED << "Ошибка: " << err.what() << RESET <<'\n';
+			error(err.what());
 			return ExitCode::Fail;
 		}
+		success();
 		return ExitCode::Success;
 	}
 	if(command == "-a"){
 		if(args.size() != 4){
+			warning("неверное число параметров");
 			command_help("a");
 			return ExitCode::Wrong_Arg;
 		}
@@ -67,13 +72,15 @@ int main(int argc,char* argv[]){
 			File_mutator file_mutator(filename,ios::app);
 			file_mutator << args[3];
 		}catch(runtime_error& err){
-			cerr << RED << "Ошибка: " << err.what() << RESET <<'\n';
+			error(err.what());
 			return ExitCode::Fail;
 		}
+		success();
 		return ExitCode::Success;
 	}
 	if(command == "-cp"){
 		if(args.size() != 4){
+			warning("неверное число параметров");
 			command_help("cp");
 			return ExitCode::Wrong_Arg;
 		}
@@ -81,13 +88,15 @@ int main(int argc,char* argv[]){
 			File_readonly file_readonly(filename);
 			file_readonly.copyfile(args[3]);
 		}catch(runtime_error& err){
-			cerr << RED << "Ошибка: " << err.what() << RESET <<'\n';
+			error(err.what());
 			return ExitCode::Fail;
 		}
+		success();
 		return ExitCode::Success;
 	}
 	if(command == "-p"){
 		if(args.size() != 5){
+			warning("неверное число параметров");
 			command_help("p");
 			return ExitCode::Wrong_Arg;
 		}
@@ -95,23 +104,27 @@ int main(int argc,char* argv[]){
 		try{
 			byte = stoi(args[3]);
 		}catch (invalid_argument& err) {
-			cerr << YELLOW << "Ошибка: некорректный числовой аргумент" << RESET << "\n";
+			error("неверный параметр");
+			help("можно указывать только числа");
 			return ExitCode::Wrong_Arg;
 		} catch (out_of_range& err) {
-			cerr << YELLOW << "Ошибка: число вне диапазона" << RESET << "\n";
+			error("неверный параметр");
+			help("можно указывать только числа не более 2147483647");
 			return ExitCode::Wrong_Arg;
 		}
 		try{
 			File_mutator file_mutator(filename);
 			file_mutator.insert(byte,args[4]);
 		}catch(runtime_error& err){
-			cerr << RED << "Ошибка: " << err.what() << RESET <<'\n';
+			error(err.what());
 			return ExitCode::Fail;
 		}
+		success();
 		return ExitCode::Success;
 	}
 	if(command == "-e"){
 		if(args.size() != 5){
+			warning("неверное число параметров");
 			command_help("e");
 			return ExitCode::Wrong_Arg;
 		}
@@ -120,23 +133,27 @@ int main(int argc,char* argv[]){
 			start = stoi(args[3]);
 			count = stoi(args[4]);
 		}catch (invalid_argument& err) {
-			cerr << YELLOW << "Ошибка: некорректный числовой аргумент" << RESET << "\n";
+			error("неверный параметр");
+			help("можно указывать только числа");
 			return ExitCode::Wrong_Arg;
 		} catch (out_of_range& err) {
-			cerr << YELLOW << "Ошибка: число вне диапазона" << RESET << "\n";
+			error("неверный параметр");
+			help("можно указывать только числа не более 2147483647");
 			return ExitCode::Wrong_Arg;
 		}
 		try{
 			File_mutator file_mutator(filename);
 			file_mutator.erase_bytes(start,count);
 		}catch(runtime_error& err){
-			cerr << RED << "Ошибка: " << err.what() << RESET <<'\n';
+			error(err.what());
 			return ExitCode::Fail;
 		}
+		success();
 		return ExitCode::Success;
 	}
 	if(command == "-f"){
 		if(args.size() != 4){
+			warning("неверное число параметров");
 			command_help("f");
 			return ExitCode::Wrong_Arg;
 		}
@@ -144,7 +161,7 @@ int main(int argc,char* argv[]){
 			File_readonly file_readonly(filename);
 			file_readonly.search(args[3]);
 		}catch(runtime_error& err){
-			cerr << RED << "Ошибка: " << err.what() << RESET <<'\n';
+			error(err.what());
 			return ExitCode::Fail;
 		}
 		return ExitCode::Success;
