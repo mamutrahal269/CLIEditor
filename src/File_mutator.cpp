@@ -50,7 +50,7 @@ void File_mutator::erase_bytes(int start,int count){
 		throw std::runtime_error("выход за границы файла");
 	}
 	file.close();
-	file.open(file_name,std::ios::in | std::ios::out | std::ios::trunc);
+	file.open(file_name,std::ios::in | std::ios::out | std::ios::trunc | std::ios::binary);
 	file<<temp;
 }
 void File_mutator::insert(int byte,const std::string str){
@@ -63,7 +63,7 @@ void File_mutator::insert(int byte,const std::string str){
 		throw std::runtime_error("выход за границы файла");
 	}
 	file.close();
-	file.open(file_name,std::ios::in | std::ios::out | std::ios::trunc);
+	file.open(file_name,std::ios::in | std::ios::out | std::ios::trunc | std::ios::binary);
 	file<<temp;
 }
 File_mutator& File_mutator::operator<<(const std::string str){
