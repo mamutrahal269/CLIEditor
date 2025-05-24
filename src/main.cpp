@@ -25,7 +25,7 @@ int main(int argc,char* argv[]){
 		return ExitCode::Success;
 	}
 	if(args.size()<3){
-		warning("неверное число параметров");
+		warning("неверное количество параметров");
 		user_help();
 		return ExitCode::Wrong_Arg;
 	}
@@ -33,7 +33,7 @@ int main(int argc,char* argv[]){
 	string filename = args[1];
 	if(command == "-rd"){
 		if(args.size() != 3){
-			warning("неверное число параметров");
+			warning("неверное количество параметров");
 			command_help("rd");
 			return ExitCode::Wrong_Arg;
 		}
@@ -48,7 +48,7 @@ int main(int argc,char* argv[]){
 	}
 	if(command == "-rw"){
 		if(args.size() != 4){
-			warning("неверное число параметров");
+			warning("неверное количество параметров");
 			command_help("rw");
 			return ExitCode::Wrong_Arg;
 		}
@@ -64,7 +64,7 @@ int main(int argc,char* argv[]){
 	}
 	if(command == "-a"){
 		if(args.size() != 4){
-			warning("неверное число параметров");
+			warning("неверное количество параметров");
 			command_help("a");
 			return ExitCode::Wrong_Arg;
 		}
@@ -80,7 +80,7 @@ int main(int argc,char* argv[]){
 	}
 	if(command == "-cp"){
 		if(args.size() != 4){
-			warning("неверное число параметров");
+			warning("неверное количество параметров");
 			command_help("cp");
 			return ExitCode::Wrong_Arg;
 		}
@@ -96,7 +96,7 @@ int main(int argc,char* argv[]){
 	}
 	if(command == "-p"){
 		if(args.size() != 5){
-			warning("неверное число параметров");
+			warning("неверное количество параметров");
 			command_help("p");
 			return ExitCode::Wrong_Arg;
 		}
@@ -105,11 +105,9 @@ int main(int argc,char* argv[]){
 			byte = stoi(args[3]);
 		}catch (invalid_argument& err) {
 			error("неверный параметр");
-			help("сначала число потом строка");
 			return ExitCode::Wrong_Arg;
 		} catch (out_of_range& err) {
 			error("неверный параметр");
-			help("можно указывать только числа не более 2147483647");
 			return ExitCode::Wrong_Arg;
 		}
 		try{
@@ -124,7 +122,7 @@ int main(int argc,char* argv[]){
 	}
 	if(command == "-e"){
 		if(args.size() != 5){
-			warning("неверное число параметров");
+			warning("неверное количество параметров");
 			command_help("e");
 			return ExitCode::Wrong_Arg;
 		}
@@ -134,11 +132,9 @@ int main(int argc,char* argv[]){
 			count = stoi(args[4]);
 		}catch (invalid_argument& err) {
 			error("неверный параметр");
-			help("можно указывать только числа");
 			return ExitCode::Wrong_Arg;
 		} catch (out_of_range& err) {
 			error("неверный параметр");
-			help("можно указывать только числа не более 2147483647");
 			return ExitCode::Wrong_Arg;
 		}
 		try{
@@ -153,7 +149,7 @@ int main(int argc,char* argv[]){
 	}
 	if(command == "-f"){
 		if(args.size() != 4){
-			warning("неверное число параметров");
+			warning("неверное количество параметров");
 			command_help("f");
 			return ExitCode::Wrong_Arg;
 		}
@@ -167,6 +163,7 @@ int main(int argc,char* argv[]){
 		return ExitCode::Success;
 	}
 	else{
+		warning("команда не существует");
 		user_help();
 		return ExitCode::Wrong_Arg;
 	}
