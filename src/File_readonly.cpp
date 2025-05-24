@@ -45,7 +45,7 @@ void File_readonly::search(const std::string str){
 	std::cout << "Байт начала строки: " << index << '\n';
 }
 void File_readonly::copyfile(const std::string filename) {
-    helpfile.open(filename,std::ios::out | std::ios::trunc);
+    helpfile.open(filename,std::ios::out | std::ios::trunc | std::ios::binary);
     if(!helpfile.is_open()){
 		throw std::runtime_error("не удалось открыть файл");
 	}
