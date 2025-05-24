@@ -8,5 +8,4 @@ add_executable(CLIEditor
     src/main.cpp
     src/File_readonly.cpp
     src/File_mutator.cpp
-    src/User_help.cpp
 )
