@@ -40,12 +40,14 @@ void File_mutator::open_file(const std::string filename,std::ios::openmode mode)
 	}
 }
 void File_mutator::erase_bytes(int start,int count){
-	std::string temp;
-	char ch;
-	while(file.get(ch)) temp += ch;
-	start--;
+	std::string temp("");
+	char buffer[4096];
+	while(file){
+		file.read(buffer,4096);
+		temp.append(buffer,file.gcount());
+	}
 	try{
-		temp.erase(start,count);
+		temp.erase(start - 1,count);
 	}catch(std::out_of_range& err){
 		throw std::runtime_error("выход за границы файла");
 	}
@@ -54,9 +56,12 @@ void File_mutator::erase_bytes(int start,int count){
 	file<<temp;
 }
 void File_mutator::insert(int byte,const std::string str){
-	std::string temp;
-	char ch;
-	while(file.get(ch)) temp += ch;
+	std::string temp("");
+	char buffer[4096];
+	while(file){
+		file.read(buffer,4096);
+		temp.append(buffer,file.gcount());
+	}
 	try{
 		temp.insert(byte,str);
 	}catch(std::out_of_range& err){
