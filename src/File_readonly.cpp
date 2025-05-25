@@ -24,19 +24,23 @@ void File_readonly::open_file(std::string filename){
 	}
 }
 void File_readonly::readfile(){
-	char ch;
-	int size = 0;
-	while(file.get(ch)){
-		size++;
-		std::cout << ch;
+	std::string temp("");
+	char buffer[4096];
+	while(file){
+		file.read(buffer,4096);
+		temp.append(buffer,file.gcount());
 	}
+	std::cout << temp;
 	std::cout << "\n------------------------------\n";
-	std::cout << "Размер файла: " << size << " байт\n";
+	std::cout << "Размер файла: " << temp.size() << " байт\n";
 }
 void File_readonly::search(const std::string str){
-	std::string temp;
-	char ch;
-	while(file.get(ch)) temp += ch;
+	std::string temp("");
+	char buffer[4096];
+	while(file){
+		file.read(buffer,4096);
+		temp.append(buffer,file.gcount());
+	}
 	int index = temp.find(str);
 	if(index == -1){
 		throw std::runtime_error("строка не найдена");
@@ -49,10 +53,10 @@ void File_readonly::copyfile(const std::string filename) {
     if(!helpfile.is_open()){
 		throw std::runtime_error("не удалось открыть файл");
 	}
-	
-    char ch;
-    while (file.get(ch)) {
-        helpfile.put(ch);
-    }
+	char buffer[4096];
+	while(file){
+		file.read(buffer,4096);
+		helpfile.write(buffer,file.gcount());
+	}
 }
 	
