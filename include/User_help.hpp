@@ -65,7 +65,7 @@ inline void command_help(const std::string command){
 		std::cout << "Использование команды f:" << NL <<
 		"./programm file.name -f \"текст\"" << NL <<
 		"Пример:" << NL <<
-		"./CLIEditor log.txt -f \"искать\"\n(поиск начала и конца строки в файле log.txt из текущей директории)" << NL;
+		"./CLIEditor log.txt -f \"искать\"\n(поиск начала строки в файле log.txt из текущей директории)" << NL;
 		return;
 	}
 	else{
