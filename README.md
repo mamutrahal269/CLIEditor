@@ -23,7 +23,7 @@
 
 ### Сборка
 ```bash
-git clone https://github.com/mamutrahal269/CLIEditor/CLIEditor.git
+git clone https://github.com/mamutrahal269/CLIEditor.git
 cd CLIEditor
 mkdir build && cd build
 cmake ..
