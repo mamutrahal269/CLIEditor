@@ -2,7 +2,6 @@
 
 ![C++](https://img.shields.io/badge/C++-17-blue?logo=cplusplus)
 ![License](https://img.shields.io/badge/License-MIT-green)
-![Platform](https://img.shields.io/badge/Platform-Linux)
 
 Простой консольный редактор файлов с поддержкой различных операций.
 
