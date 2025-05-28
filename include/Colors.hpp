@@ -1,3 +1,5 @@
+//пока не используется
+
 #pragma once
 #include <string>
 
