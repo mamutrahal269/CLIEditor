@@ -45,7 +45,7 @@ void File_readonly::search(const std::string str){
 	if(index == -1){
 		throw std::runtime_error("строка не найдена");
 	}
-	index++;
+	index++;//пользователь считает от 1,а не от 0
 	std::cout << "Байт начала строки: " << index << '\n';
 }
 void File_readonly::copyfile(const std::string filename) {
