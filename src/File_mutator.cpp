@@ -47,7 +47,7 @@ void File_mutator::erase_bytes(int start,int count){
 		temp.append(buffer,file.gcount());
 	}
 	try{
-		temp.erase(start - 1,count);
+		temp.erase(start - 1,count);//уменьшение start,потому что пользователь считает от 1, а не от 0
 	}catch(std::out_of_range& err){
 		throw std::runtime_error("выход за границы файла");
 	}
